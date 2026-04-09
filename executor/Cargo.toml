@@ -7,10 +7,13 @@ edition = "2024"
 name = "antcc-executor"
 path = "src/main.rs"
 
+[profile.release]
+strip = true
+
 [dependencies]
 anyhow = "1.0.102"
 aws-credential-types = { version = "1.2.14", features = ["hardcoded-credentials"] }
-aws-sdk-s3 = { version = "1.129.0", features = ["behavior-version-latest"] }
+aws-sdk-s3 = { version = "1", features = ["behavior-version-latest", "rustls"] }
 colonyos = "1.0.5"
 hostname = "0.4.2"
 serde = { version = "1.0.228", features = ["derive"] }

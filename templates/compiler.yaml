@@ -1,6 +1,6 @@
 kind: Container
 name: compiler
-image: ghcr.io/antpm/antcc/antcc-executor:latest
+image: ghcr.io/ant-pm/antcc-executor:latest
 replicas: {{ replicas }}
 env:
     - COLONY_HOST={{ colonies_server }}
