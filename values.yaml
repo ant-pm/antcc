@@ -1,0 +1,9 @@
+tunnel_token: ""
+colonies_server: ""
+colony_name: ""
+executor_prvkey: ""
+minio_endpoint: ""
+minio_access_key: ""
+minio_secret_key: ""
+minio_bucket: "antcc"
+replicas: 1

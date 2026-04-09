@@ -1,0 +1,28 @@
+kind: Stack
+name: antcc-minio
+network: antcc-net
+volumes:
+    - minio_data
+services:
+    - name: minio
+      image: quay.io/minio/minio
+      command:
+          - server
+          - /data
+          - --console-address
+          - ":9001"
+      ports:
+          - "9000:9000"
+          - "9001:9001"
+      env:
+          - MINIO_ROOT_USER={{ minio_access_key }}
+          - MINIO_ROOT_PASSWORD={{ minio_secret_key }}
+      mounts:
+          - minio_data:/data
+    - name: cloudflare-tunnel
+      image: cloudflare/cloudflared:latest
+      command:
+          - tunnel
+          - run
+      env:
+          - TUNNEL_TOKEN={{ tunnel_token }}

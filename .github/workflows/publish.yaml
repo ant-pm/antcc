@@ -1,0 +1,23 @@
+name: Publish
+on:
+  push:
+    tags:
+      - 'v*'
+jobs:
+  publish:
+    runs-on: ubuntu-latest
+    permissions:
+      id-token: write
+      contents: read
+    steps:
+      - uses: actions/checkout@v4
+      - name: Create archive
+        run: |
+          mkdir /tmp/metrics
+          cp README.md values.yaml package.yaml /tmp/metrics/
+          cp -r templates /tmp/metrics/templates
+          tar -czf /tmp/archive.tar.gz -C /tmp metrics
+      - name: Publish
+        uses: ant-pm/publish-action@v1
+        with:
+          registry_url: https://ant.vinlaro.com/api/packages
