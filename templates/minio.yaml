@@ -19,7 +19,7 @@ services:
           - MINIO_ROOT_PASSWORD={{ minio_secret_key }}
       mounts:
           - minio_data:/data
-    - name: cloudflare-tunnel
+    - name: cloudflare-tunnel-antcc
       image: cloudflare/cloudflared:latest
       command:
           - tunnel
