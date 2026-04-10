@@ -5,7 +5,7 @@ volumes:
     - minio_data
 services:
     - name: minio
-      image: quay.io/minio/minio
+      image: minio/minio:latest
       command:
           - server
           - /data
